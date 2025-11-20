@@ -48,6 +48,7 @@ export default function MobileMenu({ open, onClose }: any) {
                                         .trim()
                                         .replace(/\s+/g, "-")}`
                             }
+                            onClick={onClose}
                             className="block text-rose-900 tracking-[0.25em] text-lg"
                         >
                             {item}
