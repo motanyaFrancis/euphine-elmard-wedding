@@ -45,16 +45,20 @@ export default function Navigation() {
                     {navItems.map((item) => (
                         <Link
                             key={item}
-                            href={`/${item
-                                .toLowerCase()
-                                .replace(/[^a-z0-9]+/gi, " ")
-                                .trim()
-                                .replace(/\s+/g, "-")
-                                }`}
+                            href={
+                                item.toLowerCase().trim() === "home"
+                                    ? "/" // redirect "Home" to root
+                                    : `/${item
+                                        .toLowerCase()
+                                        .replace(/[^a-z0-9]+/gi, " ")
+                                        .trim()
+                                        .replace(/\s+/g, "-")}`
+                            }
                             className="hover:opacity-60"
                         >
                             {item}
                         </Link>
+
                     ))}
                 </nav>
             </header>

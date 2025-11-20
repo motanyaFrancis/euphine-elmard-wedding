@@ -39,12 +39,15 @@ export default function MobileMenu({ open, onClose }: any) {
                     <div key={item} className="mb-5">
                         <hr className="w-full mb-4 border-gray-300" />
                         <Link
-                            href={`/${item
-                                .toLowerCase()
-                                .replace(/[^a-z0-9]+/gi, " ")   
-                                .trim()                          
-                                .replace(/\s+/g, "-")            
-                                }`}
+                            href={
+                                item.toLowerCase().trim() === "home"
+                                    ? "/" // redirect "Home" to root
+                                    : `/${item
+                                        .toLowerCase()
+                                        .replace(/[^a-z0-9]+/gi, " ")
+                                        .trim()
+                                        .replace(/\s+/g, "-")}`
+                            }
                             className="block text-rose-900 tracking-[0.25em] text-lg"
                         >
                             {item}
