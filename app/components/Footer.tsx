@@ -24,7 +24,7 @@ export default function Footer() {
           href="https://motanya.co.ke"
           className="underline hover:opacity-60"
         >
-          Create your wedding website for free.
+          Create your wedding website.
         </a>
       </p>
 
