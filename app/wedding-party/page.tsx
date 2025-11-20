@@ -4,7 +4,7 @@ export default function WeddingPartyPage() {
   const bridesmaids = [
     { name: "Damacrine", role: "Maid of Honour", img: "/images/bridesmaids/1.png" },
     { name: "Gloria", role: "Bridesmaid", img: "/images/bridesmaids/2.png" },
-    { name: " ", role: "Bridesmaid", img: "/images/bridesmaids/3.png" },
+    { name: "Victoria ", role: "Bridesmaid", img: "/images/bridesmaids/3.png" },
     { name: "Deborah", role: "Bridesmaid", img: "/images/bridesmaids/4.png" },
     { name: "Esley", role: "Bridesmaid", img: "/images/bridesmaids/5.png" },
     { name: "Melissa", role: "Bridesmaid", img: "/images/bridesmaids/6.png" },
