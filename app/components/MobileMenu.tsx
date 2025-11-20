@@ -26,8 +26,8 @@ export default function MobileMenu({ open, onClose }: any) {
                     <X size={32} strokeWidth={1.25} />
                 </button>
 
-                <h1 className="text-2xl tracking-[0.1em] font-serif font-light text-rose-900">
-                    E & E
+                <h1 className="text-2xl tracking-[0.1em] font-serif-alt font-light text-rose-900">
+                    E&E
                 </h1>
 
                 <div className="w-8"></div>

@@ -23,7 +23,7 @@ export default function HomePage() {
           className="h-40 mx-auto mb-4"
         />
 
-        <h1 className="text-4xl font-serif tracking-[0.25em] text-rose-900 mb-2">
+        <h1 className="text-4xl font-serif-alt tracking-[0.25em] text-rose-900 mb-2">
           EUPHINE & ELMARD
         </h1>
 

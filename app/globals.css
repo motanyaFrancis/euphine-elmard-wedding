@@ -8,19 +8,27 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* If you want, you can register your Next.js fonts here too */
+  /* --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono); */
+
+  /* Add your Playfair & Cinzel variables if desired */
+  --font-playfair: var(--font-playfair);
+  --font-serif-alt: var(--font-serif-alt);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
+/* Body styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: inherit;  /* uses fonts from RootLayout */
+}
+
+/* Optional utility class for Cinzel Decorative */
+.font-serif-alt {
+  font-family: var(--font-serif-alt);
+}
+.font-playfair {
+  font-family: var(--font-playfair);
 }

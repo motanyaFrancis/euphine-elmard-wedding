@@ -31,7 +31,7 @@ export default function Navigation() {
                 />
 
                 {/* Names */}
-                <h1 className="text-4xl font-serif text-rose-900 tracking-[0.25em] mb-4">
+                <h1 className="text-4xl font-serif-alt text-rose-900 tracking-[0.25em] mb-4">
                     EUPHINE & ELMARD
                 </h1>
 
@@ -73,8 +73,8 @@ export default function Navigation() {
                     </button>
 
                     {/* Center Text Logo */}
-                    <h1 className="text-2xl tracking-[0.1em] font-serif font-light text-rose-900">
-                        E & E
+                    <h1 className="text-2xl tracking-[0.1em] font-serif-alt font-light text-rose-900">
+                        E&E
                     </h1>
 
                     {/* Blank spacer to visually center */}

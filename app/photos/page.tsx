@@ -17,6 +17,7 @@ export default function PhotosPage() {
         "/images/gallery/5.jpg",
         "/images/gallery/6.jpg",
         "/images/gallery/7.jpg",
+        "/images/gallery/8.png",
     ];
 
     // Shuffle images on load
