@@ -89,7 +89,7 @@ export default function OurStoryPage() {
           with us, and supporting our story.
           <br /><br />
           With love,<br />
-          <span className="font-serif text-lg">Daisy & Jasper</span>
+          <span className="font-serif text-lg">Euphine & Elmard</span>
         </p>
       </section>
     </main>
