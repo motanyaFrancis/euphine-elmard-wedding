@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import PhoneCrest from "@/components/PhoneCrest";
 
 type Gift = {
   name: string;
@@ -65,6 +66,7 @@ export default function RegistryPage() {
 
   return (
     <main className="px-6 py-16 text-rose-900 flex flex-col items-center">
+        <PhoneCrest />
       {/* Page Title */}
       <h1 className="uppercase text-2xl md:text-4xl font-serif tracking-[0.25em] mb-12 text-center">
         Desired Gifts

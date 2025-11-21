@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import PhoneCrest from "@/components/PhoneCrest";
 
 export default function PhotosPage() {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -55,6 +56,7 @@ export default function PhotosPage() {
 
     return (
         <main className="px-6 py-16 text-[#6d7b67] flex flex-col items-center">
+            <PhoneCrest />
 
             {/* Masonry Grid */}
             <section

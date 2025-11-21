@@ -1,4 +1,5 @@
 import Image from "next/image";
+import PhoneCrest from "@/components/PhoneCrest";
 
 export default function WeddingPartyPage() {
   const bridesmaids = [
@@ -25,7 +26,7 @@ export default function WeddingPartyPage() {
 
   return (
     <main className="px-6 py-16 text-rose-900 flex flex-col items-center">
-      
+      <PhoneCrest />
       {/* Bride & Groom Section */}
       <section className="w-full max-w-4xl mb-16 text-center">
         <h2 className="uppercase font-serif tracking-[0.2em] text-xl mb-10">

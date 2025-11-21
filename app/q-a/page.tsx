@@ -1,3 +1,5 @@
+import PhoneCrest from "@/components/PhoneCrest";
+
 export default function QAPage() {
     const faqs = [
         {
@@ -53,6 +55,7 @@ export default function QAPage() {
 
     return (
         <main className="px-6 py-16 text-rose-900 flex flex-col items-center">
+            <PhoneCrest />
 
             {/* Page Title */}
             <h1 className="uppercase text-3xl md:text-4xl font-serif tracking-[0.25em] mb-12 text-center">

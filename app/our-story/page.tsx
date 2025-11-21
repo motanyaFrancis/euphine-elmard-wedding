@@ -1,8 +1,10 @@
 import Image from "next/image";
+import PhoneCrest from "@/components/PhoneCrest";
 
 export default function OurStoryPage() {
   return (
     <main className="flex flex-col items-center text-rose-900 px-6 py-16">
+      <PhoneCrest />
 
       {/* --- Title --- */}
       <h1 className="uppercase text-3xl md:text-4xl font-serif tracking-[0.25em] text-center mb-12">

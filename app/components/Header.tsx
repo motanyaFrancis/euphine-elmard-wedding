@@ -73,9 +73,9 @@ export default function Navigation() {
                     </button>
 
                     {/* Center Text Logo */}
-                    <h1 className="text-2xl tracking-[0.1em] font-serif-alt font-light text-rose-900">
+                    <Link href="/" className="text-2xl tracking-[0.1em] font-serif-alt font-light text-rose-900">
                         E&E
-                    </h1>
+                    </Link>
 
                     {/* Blank spacer to visually center */}
                     <div className="w-6"></div>
