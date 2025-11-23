@@ -25,14 +25,12 @@ export default function PhotosPage() {
         "/images/gallery/12.jpg",
         "/images/gallery/13.jpg",
         "/images/gallery/14.jpg",
-        "/images/gallery/15.jpg",
-        "/images/gallery/16.jpg",
-        
+        "/images/gallery/15.jpg",        
     ];
 
     // Shuffle images on load
     useEffect(() => {
-        setPhotos([...imageList]); //.sort(() => Math.random() - 0.5));
+        setPhotos([...imageList].sort(() => Math.random() - 0.5));
     }, []);
 
     // Navigate to next image
