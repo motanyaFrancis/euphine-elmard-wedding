@@ -32,7 +32,7 @@ export default function PhotosPage() {
 
     // Shuffle images on load
     useEffect(() => {
-        setPhotos([...imageList].sort(() => Math.random() - 0.5));
+        setPhotos([...imageList]); //.sort(() => Math.random() - 0.5));
     }, []);
 
     // Navigate to next image
