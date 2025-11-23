@@ -213,9 +213,16 @@ export default function RegistryPage() {
     <main className="px-6 py-16 text-rose-900 flex flex-col items-center">
       <PhoneCrest />
 
-      <h1 className="uppercase text-2xl md:text-4xl font-serif tracking-[0.25em] mb-12 text-center">
+      <h1 className="uppercase text-2xl md:text-4xl font-serif tracking-[0.25em] mb-6 text-center">
         Desired Gifts
       </h1>
+
+      <p className="text-center text-rose-800 max-w-2xl mb-12 leading-relaxed">
+        Your presence in our lives is the greatest gift of all.
+        If you prefer, <span className="font-semibold"> gift cards and shopping vouchers </span> 
+        from any store of choice, supermarket, or mall are also warmly welcome and deeply appreciated.
+        Thank you for celebrating this special moment with us.
+      </p>
 
       <section className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {gifts.map((gift, index) => (
@@ -235,7 +242,6 @@ export default function RegistryPage() {
               }}
             />
 
-
             <div className="p-4 text-center space-y-2">
               <h3 className="text-lg font-serif uppercase tracking-wide">
                 {gift.name}
@@ -252,7 +258,6 @@ export default function RegistryPage() {
               </p>
 
               <p className="text-sm opacity-80">
-                {/* Quantity: {gift.quantityFulfilled ?? 0} / */}
                 Quantity {gift.quantityRequired}
               </p>
             </div>
@@ -260,5 +265,6 @@ export default function RegistryPage() {
         ))}
       </section>
     </main>
+
   );
 }
