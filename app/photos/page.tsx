@@ -19,6 +19,15 @@ export default function PhotosPage() {
         "/images/gallery/6.jpg",
         "/images/gallery/7.jpg",
         "/images/gallery/8.png",
+        "/images/gallery/9.jpg",
+        "/images/gallery/10.jpg",
+        "/images/gallery/11.jpg",
+        "/images/gallery/12.jpg",
+        "/images/gallery/13.jpg",
+        "/images/gallery/14.jpg",
+        "/images/gallery/15.jpg",
+        "/images/gallery/16.jpg",
+        
     ];
 
     // Shuffle images on load
@@ -55,7 +64,7 @@ export default function PhotosPage() {
     }, [selectedIndex, goNext, goPrev]);
 
     return (
-        <main className="px-6 py-16 text-[#6d7b67] flex flex-col items-center">
+        <main className="px-6 py-16 text-rose-900 flex flex-col items-center">
             <PhoneCrest />
 
             {/* Masonry Grid */}
