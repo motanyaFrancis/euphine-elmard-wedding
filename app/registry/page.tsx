@@ -253,7 +253,7 @@ export default function RegistryPage() {
 
               <p className="text-sm opacity-80">
                 {/* Quantity: {gift.quantityFulfilled ?? 0} / */}
-                 {gift.quantityRequired}
+                Quantity {gift.quantityRequired}
               </p>
             </div>
           </div>
