@@ -228,7 +228,7 @@ export default function RegistryPage() {
               alt={gift.name}
               width={400}
               height={300}
-              className="object-cover w-full h-60"
+              className="object-contain w-full h-60"
               onError={(e) => {
                 const target = e.currentTarget as HTMLImageElement;
                 target.src = "/images/registry/placeholder.avif"; // fallback
