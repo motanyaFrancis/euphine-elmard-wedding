@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import PhoneCrest from "@/components/PhoneCrest";
 
@@ -8,13 +9,14 @@ type Gift = {
   img: string;
   store: string;
   quantityRequired: number;
-  quantityFulfilled?: number;
+  quantityFulfilled: number; // always start at 0
   code: string;
   unitPrice: number;
+  isLocked?: boolean; // locked if another device fulfilled it
 };
 
 export default function RegistryPage() {
-  const gifts: Gift[] = [
+  const initialGifts: Gift[] = [
     {
       name: "TCL Washer/Dryer 10/6KG",
       img: "/images/registry/tcl-washer.webp",
@@ -114,9 +116,8 @@ export default function RegistryPage() {
       code: "8691607016604",
       unitPrice: 37569,
     },
-    // -------------------------------
-    // SARIT CENTRE ITEMS (From Image)
-    // -------------------------------
+
+    // Sarit Centre items (reset to 0)
     {
       name: "Scatter: Velvet fleck 48×84 gold",
       img: "",
@@ -136,7 +137,7 @@ export default function RegistryPage() {
       quantityFulfilled: 0,
     },
     {
-      name: " Bath mat (singles): Mem foam rib border tobacco",
+      name: "Bath mat: Mem foam rib border tobacco",
       img: "",
       store: "Sarit Centre",
       code: "104707191",
@@ -145,7 +146,7 @@ export default function RegistryPage() {
       quantityFulfilled: 0,
     },
     {
-      name: "Candle accessory: TH statue single tact ",
+      name: "Candle accessory: TH statue single tact",
       img: "",
       store: "Sarit Centre",
       code: "104558882",
@@ -154,13 +155,13 @@ export default function RegistryPage() {
       quantityFulfilled: 0,
     },
     {
-      name: " Alarm clock: Pls oval retro alarm ELK",
+      name: "Alarm clock: Retro alarm ELK",
       img: "",
       store: "Sarit Centre",
       code: "105343661",
       unitPrice: 2100,
       quantityRequired: 1,
-      quantityFulfilled: 1,
+      quantityFulfilled: 0,
     },
     {
       name: "Decorative accessory: Wooden calendar",
@@ -178,10 +179,10 @@ export default function RegistryPage() {
       code: "104648336",
       unitPrice: 4400,
       quantityRequired: 2,
-      quantityFulfilled: 2,
+      quantityFulfilled: 0,
     },
     {
-      name: "Premium towel: Ripple zero twist blue bt",
+      name: "Premium towel: Ripple zero twist blue",
       img: "",
       store: "Sarit Centre",
       code: "210201009001",
@@ -196,18 +197,72 @@ export default function RegistryPage() {
       code: "2101114287001",
       unitPrice: 6000,
       quantityRequired: 2,
-      quantityFulfilled: 2,
+      quantityFulfilled: 0,
     },
     {
-      name: "Utility hold-all: Mini kwezI utility black M",
+      name: "Utility hold-all: Mini kwezi utility black M",
       img: "",
       store: "Sarit Centre",
       code: "104055214",
       unitPrice: 6000,
       quantityRequired: 1,
-      quantityFulfilled: 1,
+      quantityFulfilled: 0,
     },
   ];
+
+  const [gifts, setGifts] = useState<Gift[]>(initialGifts);
+
+  // Load from device storage
+  useEffect(() => {
+    const updated = initialGifts.map((gift) => {
+      const qtyKey = `gift-${gift.code}-qty`;
+      const lockKey = `gift-${gift.code}-lock`;
+
+      const savedQty = Number(localStorage.getItem(qtyKey) || 0);
+      const savedLock = localStorage.getItem(lockKey) === "true";
+
+      return {
+        ...gift,
+        quantityFulfilled: savedQty,
+        isLocked: savedLock,
+      };
+    });
+
+    setGifts(updated);
+  }, []);
+
+  // Update quantity
+  const updateQty = (code: string, qty: number) => {
+    setGifts((prev) =>
+      prev.map((gift) => {
+        if (gift.code !== code) return gift;
+
+        const qtyKey = `gift-${code}-qty`;
+        const lockKey = `gift-${code}-lock`;
+
+        // Device lock — only this device can lower quantity
+        if (gift.isLocked && qty < gift.quantityFulfilled) {
+          return gift; // Prevent undo on other devices
+        }
+
+        localStorage.setItem(qtyKey, String(qty));
+
+        if (qty > 0) {
+          localStorage.setItem(lockKey, "true");
+        }
+
+        if (qty === 0) {
+          localStorage.removeItem(lockKey);
+        }
+
+        return {
+          ...gift,
+          quantityFulfilled: qty,
+          isLocked: qty > 0,
+        };
+      })
+    );
+  };
 
   return (
     <main className="px-6 py-16 text-rose-900 flex flex-col items-center">
@@ -218,16 +273,15 @@ export default function RegistryPage() {
       </h1>
 
       <p className="text-center text-rose-800 max-w-2xl mb-12 leading-relaxed">
-        Your presence in our lives is the greatest gift of all.
-        If you prefer, <span className="font-semibold"> gift cards and shopping vouchers </span> 
-        from any store of choice, supermarket, or mall are also warmly welcome and deeply appreciated.
-        Thank you for celebrating this special moment with us.
+        Your presence in our lives is the greatest gift of all.  
+        If you prefer, <span className="font-semibold">gift cards and shopping vouchers</span>  
+        from any supermarket, store, or mall are also warmly welcome.  
       </p>
 
       <section className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {gifts.map((gift, index) => (
+        {gifts.map((gift) => (
           <div
-            key={index}
+            key={gift.code}
             className="flex flex-col items-center bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition"
           >
             <Image
@@ -236,10 +290,6 @@ export default function RegistryPage() {
               width={400}
               height={300}
               className="object-contain w-full h-60"
-              onError={(e) => {
-                const target = e.currentTarget as HTMLImageElement;
-                target.src = "/images/registry/placeholder.avif"; // fallback
-              }}
             />
 
             <div className="p-4 text-center space-y-2">
@@ -258,13 +308,33 @@ export default function RegistryPage() {
               </p>
 
               <p className="text-sm opacity-80">
-                Quantity {gift.quantityRequired}
+                Needed: {gift.quantityRequired}
               </p>
+
+              {/* Quantity selector */}
+              <div className="mt-3">
+                <select
+                  value={gift.quantityFulfilled}
+                  onChange={(e) =>
+                    updateQty(gift.code, Number(e.target.value))
+                  }
+                  disabled={gift.isLocked && gift.quantityFulfilled > 0}
+                  className="border p-2 rounded text-sm"
+                >
+                  {Array.from(
+                    { length: gift.quantityRequired + 1 },
+                    (_, i) => (
+                      <option key={i} value={i}>
+                        {i === 0 ? "Not acquired" : `${i} acquired`}
+                      </option>
+                    )
+                  )}
+                </select>
+              </div>
             </div>
           </div>
         ))}
       </section>
     </main>
-
   );
 }
