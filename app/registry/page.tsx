@@ -251,9 +251,10 @@ export default function RegistryPage() {
                 Unit Price: KES {gift.unitPrice.toLocaleString()}
               </p>
 
-              {/* <p className="text-sm opacity-80">
-                Quantity: {gift.quantityFulfilled ?? 0} / {gift.quantityRequired}
-              </p> */}
+              <p className="text-sm opacity-80">
+                {/* Quantity: {gift.quantityFulfilled ?? 0} / */}
+                 {gift.quantityRequired}
+              </p>
             </div>
           </div>
         ))}
